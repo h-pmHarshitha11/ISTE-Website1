@@ -8,7 +8,14 @@
     />
     <span class="site-title">ISTE</span>
   </a>
-  <ul class="nav-links">
+
+  <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <ul class="nav-links" id="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="event.html">Events</a></li>
     <li class="dropdown">
@@ -21,5 +28,10 @@
     <li><a href="our_team.html">Team</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="aboutus.html">About</a></li>
+    <li>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <!-- icon inserted by JS -->
+      </button>
+    </li>
   </ul>
 </nav>
