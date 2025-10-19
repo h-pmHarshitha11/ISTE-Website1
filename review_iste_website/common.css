@@ -1,0 +1,281 @@
+/* ISTE PESCE – Global Design System */
+
+/* 1) Design Tokens */
+:root {
+  /* Fonts */
+  --font-sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+
+  /* Brand Colors */
+  --color-primary: #e52e71;
+  --color-secondary: #ff8a00;
+  --color-accent: #22d3ee;
+
+  /* Text */
+  --text-100: #f8fafc;
+  --text-300: #e2e8f0;
+  --text-500: #94a3b8;
+
+  /* Surfaces / Backgrounds (dark default) */
+  --bg-900: #0f172a;
+  --bg-800: #1e293b;
+  --bg-700: #334155;
+  --bg-600: #475569;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 6px 14px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.18);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.25);
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  --gradient-surface: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1),
+    rgba(139, 92, 246, 0.1)
+  );
+}
+
+/* Optional light theme override */
+:root[data-theme="light"] {
+  --text-100: #0b1220;
+  --text-300: #334155;
+  --text-500: #64748b;
+  --bg-900: #ffffff;
+  --bg-800: #f8fafc;
+  --bg-700: #f1f5f9;
+  --bg-600: #e2e8f0;
+  --glass-bg: rgba(15, 23, 42, 0.05);
+  --glass-border: rgba(0, 0, 0, 0.08);
+}
+
+/* 2) Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-100);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Elegant global gradient you can opt into */
+.bg-elegant {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 60%, #475569 100%);
+}
+
+/* 3) Layout utilities */
+.container {
+  width: min(1200px, 100% - 2rem);
+  margin-inline: auto;
+}
+.section {
+  padding: 4rem 0;
+}
+.section--dense {
+  padding: 2rem 0;
+}
+
+/* 4) Typography */
+.h1, .h2, .h3, .h4, .section-title {
+  font-family: var(--font-serif);
+  letter-spacing: -0.3px;
+}
+.h1 { font-size: clamp(2.25rem, 2vw + 2rem, 3.5rem); font-weight: 800; }
+.h2, .section-title { font-size: clamp(1.75rem, 1.2vw + 1.2rem, 2.5rem); font-weight: 700; }
+.h3 { font-size: 1.5rem; font-weight: 600; }
+.h4 { font-size: 1.25rem; font-weight: 600; }
+.text-muted { color: var(--text-300); }
+
+.gradient-text {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 5) Cards */
+.card, .glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.card {
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(229, 46, 113, 0.35);
+}
+.card--interactive { cursor: pointer; }
+.card--hero { padding: 2.25rem; border-radius: var(--radius-xl); }
+
+/* 6) Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 0;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  color: #fff;
+  background: var(--gradient-brand);
+  box-shadow: 0 10px 24px rgba(229, 46, 113, 0.28);
+}
+.btn-primary:hover {
+  box-shadow: 0 16px 34px rgba(229, 46, 113, 0.36);
+}
+
+.btn-secondary {
+  color: var(--text-100);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+}
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.12); }
+
+.btn-ghost {
+  color: var(--text-300);
+  background: transparent;
+  border: 1px dashed var(--glass-border);
+}
+
+/* 7) Badges/Chips */
+.badge, .chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.08);
+}
+.badge--success { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+.badge--info { background: rgba(59, 130, 246, 0.18); color: #60a5fa; }
+.badge--warn { background: rgba(250, 204, 21, 0.18); color: #facc15; }
+
+/* 8) Grids */
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.grid-dense { gap: 1rem; }
+.grid-spacious { gap: 2rem; }
+
+/* 9) Hover/Transitions */
+.hover-lift { transition: transform 0.25s ease; }
+.hover-lift:hover { transform: translateY(-6px); }
+
+/* 10) Reveal Animations (JS toggles .is-visible) */
+.reveal, .reveal-up, .reveal-left, .reveal-right {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-left { transform: translateX(-24px); }
+.reveal-right { transform: translateX(24px); }
+.reveal.is-visible, .reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left.is-visible, .reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 11) Particle Background (shared style) */
+.particle-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 60%, #475569 100%);
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 70%, transparent 100%);
+}
+.particle:nth-child(odd) {
+  background: radial-gradient(circle, rgba(99,102,241,0.6) 0%, rgba(99,102,241,0.1) 70%, transparent 100%);
+  animation-duration: 12s;
+}
+.particle:nth-child(even) {
+  background: radial-gradient(circle, rgba(139,92,246,0.6) 0%, rgba(139,92,246,0.1) 70%, transparent 100%);
+  animation-duration: 10s;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0) scale(1); opacity: 0.3; }
+  25% { transform: translateY(-15px) rotate(90deg) scale(1.05); opacity: 0.6; }
+  50% { transform: translateY(-30px) rotate(180deg) scale(0.95); opacity: 0.4; }
+  75% { transform: translateY(-15px) rotate(270deg) scale(1.02); opacity: 0.7; }
+}
+
+/* 12) Scroll Progress */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--gradient-brand);
+  box-shadow: 0 4px 14px rgba(229, 46, 113, 0.4);
+  z-index: 2000;
+}
+
+/* 13) Utilities */
+.max-w-1200 { max-width: 1200px; }
+.center { margin-inline: auto; }
+.mt-2 { margin-top: 0.5rem; } .mt-4 { margin-top: 1rem; } .mt-8 { margin-top: 2rem; }
+.mb-2 { margin-bottom: 0.5rem; } .mb-4 { margin-bottom: 1rem; } .mb-8 { margin-bottom: 2rem; }
+.pt-4 { padding-top: 1rem; } .pt-8 { padding-top: 2rem; } .pb-8 { padding-bottom: 2rem; }
+
+/* 14) Navbar helpers (shared, complements navbar.css) */
+.navbar.shrink { padding: 0.5rem 1rem !important; }
+.navbar.shrink .logo-img { width: 48px; height: 48px; }
+.navbar .theme-toggle {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--text-300);
+  border-radius: 999px;
+  width: 40px; height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background .25s ease, transform .2s ease;
+}
+.navbar .theme-toggle:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
